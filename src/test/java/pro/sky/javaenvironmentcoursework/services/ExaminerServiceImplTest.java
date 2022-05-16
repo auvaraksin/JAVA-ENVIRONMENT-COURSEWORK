@@ -8,8 +8,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import pro.sky.javaenvironmentcoursework.data.QuestionsRepository;
 import pro.sky.javaenvironmentcoursework.services.implementations.ExaminerServiceImpl;
-
-import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 import static pro.sky.javaenvironmentcoursework.constants.TestConstants.*;
 
@@ -24,8 +22,8 @@ public class ExaminerServiceImplTest {
 
     @Test
     public void shouldReturnAnyListWhenCallGetQuestionsMethod() {
+        when(questionsRepositoryMock.getAll()).thenReturn(DEFAULT_QUESTION_LIST);
         when(questionsRepositoryMock.getRandomQuestion()).thenReturn(DEFAULT_QUESTION_OBJECT);
-        when(out.getQuestions(anyInt())).thenReturn(DEFAULT_QUESTION_RANDOMLIST);
-        Assertions.assertEquals(DEFAULT_QUESTION_RANDOMLIST, out.getQuestions(anyInt()));
+        Assertions.assertEquals(DEFAULT_QUESTION_RANDOMLIST, out.getQuestions(1));
     }
 }
